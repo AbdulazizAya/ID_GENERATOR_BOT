@@ -5,9 +5,8 @@ Bot_Token = "7995091500:AAGANzqrf1FnN7ddwULypQ2YJ8N8FSvSagQ"
 
 async def start(update:Update , context: CallbackContext):
 
-    option_1 = InlineKeyboardButton("Tech +",url = "https://t.me/Tech_plus_amharic")
     option_2 = InlineKeyboardButton("CONNECT",url = "https://t.me/C_ONNEC_T")
-    Keyboard = [[option_1,option_2]]
+    Keyboard = [[InlineKeyboardButton("Tech +",callback_data="option2")],[option_2]]
 
     reply_markup = InlineKeyboardMarkup(Keyboard)
 
