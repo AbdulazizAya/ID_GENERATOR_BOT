@@ -21,8 +21,19 @@ async def help(update:Update,context:CallbackContext):
                                     "/submitname to send your name. ")
 
 async def handle_message(update:Update,context:CallbackContext):
-    User_text = update.message.text
-    await update.message.reply_text(f"Your message is {User_text}.")
+    User_text = update.message.text.lower()
+    if "hello" in User_text:
+        response = "Hey👋, How are you doing today??"
+    elif "how are you" in User_text:
+        response = "I am just a bot, but I'm doing great! 😊"
+    elif "goodbye" in User_text:
+        response = "Good Bye ! Have a Great Day!"
+    else:
+        response = "Sorry, I don't Understand that."
+
+    await update.message.reply_text(f"{response}")
+
+
 
 def main():
     application = Application.builder().token(Bot_Token).build()
