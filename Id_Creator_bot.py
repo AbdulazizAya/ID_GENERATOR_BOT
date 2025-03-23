@@ -13,16 +13,21 @@ async def submit_photo(update:Update , context:CallbackContext):
 async def Submit_name(update:Update,context:CallbackContext):
     await update.message.reply_text("Please Type your Full Name as it should appear on the ID.")
 
+async def help(update:Update,context:CallbackContext):
     
+    await update.message.reply_text("Use these commands to Use the bot :\n"
+                                    "/start to start the bot.\n"
+                                    "/submitphoto to send the photo for your ID.\n"
+                                    "/submitname to send your name. ")
 
 
 def main():
     application = Application.builder().token(Bot_Token).build()
 
     application.add_handler(CommandHandler("start",start))
-    application.add_handler(CommandHandler("Submit",submit_photo))
-    application.add_handler(CommandHandler("Submitname",Submit_name))
-    
+    application.add_handler(CommandHandler("submitphoto",submit_photo))
+    application.add_handler(CommandHandler("submitname",Submit_name))
+    application.add_handler(CommandHandler("help",help))
     application.run_polling()
 
 if __name__ == '__main__':
