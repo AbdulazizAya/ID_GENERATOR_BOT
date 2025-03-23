@@ -20,6 +20,9 @@ async def help(update:Update,context:CallbackContext):
                                     "/submitphoto to send the photo for your ID.\n"
                                     "/submitname to send your name. ")
 
+async def handle_message(update:Update,context:CallbackContext):
+    User_text = update.message.text
+    await update.message.reply_text(f"Your message is {User_text}.")
 
 def main():
     application = Application.builder().token(Bot_Token).build()
@@ -28,6 +31,8 @@ def main():
     application.add_handler(CommandHandler("submitphoto",submit_photo))
     application.add_handler(CommandHandler("submitname",Submit_name))
     application.add_handler(CommandHandler("help",help))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND,handle_message))
+    
     application.run_polling()
 
 if __name__ == '__main__':
